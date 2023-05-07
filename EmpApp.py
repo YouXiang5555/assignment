@@ -255,5 +255,82 @@ def record_attendance():
     print("attendance record added...")
     return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date, check_in_time = check_in_time, check_out_time  = check_out_time, duration = duration_hours)
 
+@app.route("/payroll", methods=['GET', 'POST'])
+def calculate_payroll():
+    employee_id = request.form['payroll_employee_id']
+    month = request.form['month']
+
+
+    # Retrieve the necessary data from the employee and attendance tables
+    select_employee_sql = "SELECT employee_name, contact, email, position, payscale, hiredDate FROM employee WHERE emp_id = %s"
+    select_attendance_sql = "SELECT check_in_time, check_out_time FROM attendance WHERE attend_employee_id = %s AND MONTH(date) = %s AND YEAR(date) = %s"
+
+    cursor = db_conn.cursor()
+    try:
+        # Retrieve employee data
+        cursor.execute(select_employee_sql, (employee_id,))
+        result = cursor.fetchone()
+        if result is None:
+            return "Employee not found"
+
+        employee_name, contact, email, position, payscale, hiredDate = result
+
+        # Retrieve attendance data
+        cursor.execute(select_attendance_sql, (employee_id, month, year))
+        results = cursor.fetchall()
+
+        # Calculate the total working hours
+        total_working_hours = 0
+        for check_in_time, check_out_time in results:
+            total_working_hours += (check_out_time - check_in_time).total_seconds() / 3600
+
+        # Calculate the total salary
+        total_salary = total_working_hours * payscale
+
+        # Return the payroll data
+        return render_template('payroll_output.html', emp_id=employee_id, name=employee_name, contact=contact, email=email, position=position, payscale=payscale, hiredDate=hiredDate, month=month, year=year, total_working_hours=total_working_hours, total_salary=total_salary)
+    finally:
+        cursor.close()
+
+@app.route("/salary", methods=['POST'])
+def calculateSalary():
+    employee_id = request.form['employee_id']
+    month = int(request.form['month'])
+    year = int(request.form['year'])
+    # Retrieve the necessary data from the employee and attendance tables
+    select_employee_sql = "SELECT employee_name, contact, email, position, payscale, hiredDate FROM employee WHERE employee_id = %s"
+    select_attendance_sql = "SELECT check_in_time, check_out_time FROM attendance WHERE employee_id = %s AND MONTH(date) = %s AND YEAR(date) = %s"
+
+    cursor = db_conn.cursor()
+
+    try:
+        # Retrieve employee data
+        cursor.execute(select_employee_sql, (employee_id,))
+        result = cursor.fetchone()
+        if result is None:
+            return "Employee not found"
+
+        employee_name, contact, email, position, payscale, hiredDate = result
+
+        # Retrieve attendance data
+        cursor.execute(select_attendance_sql, (employee_id, month, year))
+        results = cursor.fetchall()
+
+        if len(results) == 0:
+            return "No attendance records found for this employee in the specified month and year"
+
+        # Calculate the total working hours
+        total_working_hours = 0
+        for check_in_time, check_out_time in results:
+            total_working_hours += (check_out_time - check_in_time).total_seconds() / 3600
+
+        # Calculate the total salary
+        total_salary = total_working_hours * payscale
+
+        # Return the payroll data
+        return render_template('payroll_output.html', emp_id=employee_id, name=employee_name, contact=contact, email=email, position=position, payscale=payscale, hiredDate=hiredDate, month=month, year=year, total_working_hours=total_working_hours, total_salary=total_salary)
+    finally:
+        cursor.close()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
