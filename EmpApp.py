@@ -38,7 +38,7 @@ def uppage():
     return render_template('update.html')
 
 @app.route("/deletehome", methods=['GET', 'POST'])
-def uppage():
+def delpage():
     return render_template('delete.html')
     
 @app.route("/about", methods=['GET', 'POST'])
