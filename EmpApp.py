@@ -4,7 +4,6 @@ import os
 import boto3
 from config import *
 import logging
-import date
 from datetime import datetime
 
 logging.basicConfig(level=logging.DEBUG)
