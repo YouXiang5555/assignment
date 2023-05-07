@@ -131,7 +131,7 @@ def GetEmp():
         else:
             return "Employee not found"
 
-    return render_template('FindEmpInput.html')
+    return render_template('FindEmpInput.html', employee_id = emp_id, employee_name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
 
 @app.route("/deleteemp", methods=['GET', 'POST'])
 def DeleteEmp():
