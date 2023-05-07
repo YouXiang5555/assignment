@@ -1,3 +1,23 @@
+Skip to content
+YouXiang5555
+/
+assignment
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+More
+Beta Try the new code view
+assignment/EmpApp.py /
+@YouXiang5555
+YouXiang5555 Update EmpApp.py
+ History
+ 1 contributor
+215 lines (173 sloc)  7.4 KB
 
 from flask import Flask, render_template, request
 from pymysql import connections
@@ -44,10 +64,9 @@ def uppage():
     
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html'))
 
 
-@app.route("/addemp", methods=['POST'])
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['employee_id']
@@ -95,7 +114,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=employee_name)
+    return render_template('InsertEmpInput.html', name=employee_name)
 
 #get employee
 @app.route("/getemp", methods=['GET', 'POST'])
@@ -127,11 +146,11 @@ def GetEmp():
                 custombucket,
                 emp_image_file_name_in_s3)
 
-            return render_template('GetEmpOutput.html', name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
+            return render_template('FindEmpInput.html', name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
         else:
             return "Employee not found"
 
-    return render_template('GetEmpInput.html')
+    return render_template('FindEmpInput.html')
 
 ##delete employee
 @app.route("/deleteemp", methods=['GET', 'POST'])
@@ -228,3 +247,18 @@ def record_attendance():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+assignment/EmpApp.py at main · YouXiang5555/assignment
