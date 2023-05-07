@@ -43,7 +43,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="templates/index.html">
             <span>
               Cryptop
             </span>
@@ -57,10 +57,15 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item ">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="templates/index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="about.html"> About </a>
+                  <form >
+                    <button type="submit" formaction="/" >HOME</button>
+                  </form>
+                  <form >
+                    <button type="submit" formaction="/about"> About</button>
+                  </form>
                 </li>
               </ul>
               <div class="user_option">
@@ -106,7 +111,7 @@
                 <input type="text" id="position" name="position" required>
                 <br>
                 <label for="payscale">Payscale:</label>
-                <input type="number" name="payacale" id="payscale">
+                <input type="number" name="payscale" id="payscale">
                 <br>
                 <label for="hiredDate">Hired Date</label>
                 <input type="date" id="hiredDate" name="hiredDate" required>
