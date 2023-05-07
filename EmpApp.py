@@ -93,7 +93,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('InsertEmpInput.html', name=employee_name)
+    return render_template('InsertEmpInput.html', id-emp_id, name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
 
 #get employee
 @app.route("/getemp", methods=['GET', 'POST'])
