@@ -43,7 +43,7 @@ def uppage():
     
 @app.route("/about", methods=['GET', 'POST'])
 def about():
-    return render_template('about.html'))
+    return render_template('about.html')
 
 
 @app.route("/addemp", methods=['POST'])
