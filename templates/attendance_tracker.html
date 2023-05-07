@@ -191,8 +191,8 @@
 
             <div class="box1">
                 <div class="box1">
-                    <form action="submit-attendance.php" method="post">
-                        <label for="employee-id">Employee ID:</label>
+                    <form id="attendance-form" action="/attendance" method="POST">
+                        <label for="employee_id">Employee ID:</label>
                         <input type="text" name="employee_id" id="employee_id" onkeypress="return isNumeric(event);"
                             required>
                         <br>
