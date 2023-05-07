@@ -4,6 +4,7 @@ import os
 import boto3
 from config import *
 import logging
+from datetime import datetime
 
 logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
@@ -234,20 +235,25 @@ def record_attendance():
     date = request.form['date']
     check_in_time = request.form['check_in_time']
     check_out_time = request.form['check_out_time']
-    duration = check_out_time - check_in_time
+    
+    check_in_datetime = datetime.strptime(check_in_time, "%H:%M")
+    check_out_datetime = datetime.strptime(check_out_time, "%H:%M")
+    
+    duration = check_out_datetime - check_in_datetime
+    duration_hours = duration.total_seconds() / 3600
     
     # Insert the attendance record into the attendance table
     insert_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(insert_sql, (employee_id, date, check_in_time, check_out_time,duration))
+        cursor.execute(insert_sql, (employee_id, date, check_in_time, check_out_time,duration_hours))
         db_conn.commit()
     finally:
         cursor.close()
 
     print("attendance record added...")
-    return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date, check_in_time = check_in_time, check_out_time  = check_out_time, duration = duration)
+    return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date, check_in_time = check_in_time, check_out_time  = check_out_time, duration = duration_hours)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
