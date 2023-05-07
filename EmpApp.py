@@ -1,24 +1,3 @@
-Skip to content
-YouXiang5555
-/
-assignment
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-More
-Beta Try the new code view
-assignment/EmpApp.py /
-@YouXiang5555
-YouXiang5555 Update EmpApp.py
- History
- 1 contributor
-215 lines (173 sloc)  7.4 KB
-
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -247,18 +226,3 @@ def record_attendance():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-assignment/EmpApp.py at main · YouXiang5555/assignment
