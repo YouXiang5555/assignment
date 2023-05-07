@@ -41,7 +41,7 @@ def uppage():
 def uppage():
     return render_template('delete.html')
     
-@app.route("/about")
+@app.route("/about", methods=['GET', 'POST'])
 def about():
     return render_template('about.html'))
 
