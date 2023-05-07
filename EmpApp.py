@@ -236,7 +236,7 @@ def record_attendance():
     check_out_time = request.form['check_out_time']
 
     # Insert the attendance record into the attendance table
-    insert_sql = "INSERT INTO attendance (employee_id, date, check_in_time, check_out_time) VALUES (%s, %s, %s, %s)"
+    insert_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
