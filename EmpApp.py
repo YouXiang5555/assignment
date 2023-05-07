@@ -236,17 +236,17 @@ def record_attendance():
     check_out_time = request.form['check_out_time']
 
     # Insert the attendance record into the attendance table
-    insert_sql = "INSERT INTO attendance (attend_employee_id, date, check_in_time, check_out_time) VALUES (%s, %s, %s, %s)"
+    insert_sql = "INSERT INTO attendance (employee_id, date, check_in_time, check_out_time) VALUES (%s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(insert_sql, (attend_employee_id, date, check_in_time, check_out_time))
+        cursor.execute(insert_sql, (employee_id, date, check_in_time, check_out_time))
         db_conn.commit()
     finally:
         cursor.close()
 
     print("attendance record added...")
-    return render_template('attendance_tracker_output.html', attend_employee_id=attend_employee_id, date=date)
+    return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
