@@ -42,7 +42,15 @@ def uppage():
 @app.route("/deletehome", methods=['GET', 'POST'])
 def delpage():
     return render_template('delete.html')
-    
+
+@app.route("/attendencehome", methods=['GET', 'POST'])
+def attendpage():
+    return render_template('attendance_tracker.html')
+
+@app.route("/payrollhome", methods=['GET', 'POST'])
+def payrollpage():
+    return render_template('payroll.html')
+
 @app.route("/about", methods=['GET', 'POST'])
 def about():
     return render_template('about.html')
