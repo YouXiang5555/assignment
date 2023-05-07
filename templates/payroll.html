@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Cryptop</title>
+
+    <!-- slider stylesheet -->
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+    <style>
+        #h2margin {
+            margin: 20px auto;
+        }
+
+        .button-wrapper {
+            text-align: center;
+        }
+
+        .container1 {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .home-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #c30505;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .box1 {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 65%;
+            margin: 25px auto;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select,
+        form input[type="text"],
+        form input[type="time"],
+        form input[type="date"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+
+    <script>
+        function isNumeric(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                            Cryptop
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                            <ul class="navbar-nav  ">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="index.html">Home <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="about.html"> About </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="how.html"> How </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span>Wallet</span> <img src="images/wallet.png" alt="" />
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"> Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"> Sign Up</a>
+                                </li>
+                            </ul>
+                            <div class="user_option">
+                                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <!-- about section -->
+
+    <section class="client_section layout_padding-bottom">
+        <div class="container">
+            <div class="heading_container">
+                <h2 id=h2margin>
+                    Payroll Generator
+                </h2>
+            </div>
+
+            <div class="box1">
+                <div class="box1">
+                    <form action="submit-attendance.php" method="post">
+                        <label for="employee-id">Employee ID:</label>
+                        <input type="text" name="employee-id" id="employee-id" onkeypress="return isNumeric(event);"
+                            required>
+                        <label for="month">Month:</label>
+                        <select id="month" name="month">
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+
+                        <label for="year">Year:</label>
+                        <input type="text" id="year" name="year" onkeypress="return isNumeric(event);"
+                        required>
+
+                        <div class="container1">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- end info_section -->
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+        <p>
+            &copy; 2019 All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+        </p>
+    </section>
+    <!-- footer section -->
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- owl carousel script 
+    -->
+    <script type="text/javascript">
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 0,
+            navText: [],
+            center: true,
+            autoplay: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    </script>
+    <!-- end owl carousel script -->
+</body>
+
+</html>
