@@ -3,7 +3,9 @@ from pymysql import connections
 import os
 import boto3
 from config import *
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 bucket = custombucket
@@ -131,11 +133,12 @@ def GetEmp():
 
     return render_template('FindEmpInput.html')
 
-##delete employee
 @app.route("/deleteemp", methods=['GET', 'POST'])
 def DeleteEmp():
+    logging.debug(f"Request method: {request.method}")
     if request.method == 'POST':
         emp_id = request.form['delete_employee_id']
+        logging.debug(f"Employee ID: {emp_id}")
 
         # Delete employee record from the database
         delete_sql = "DELETE FROM employee WHERE employee_id = %s"
@@ -145,6 +148,8 @@ def DeleteEmp():
 
         deleted_rows = cursor.rowcount
         cursor.close()
+
+        logging.debug(f"Deleted rows: {deleted_rows}")
 
         # Delete employee image from S3
         if deleted_rows > 0:
@@ -159,7 +164,7 @@ def DeleteEmp():
         else:
             return "Employee not found or already deleted."
 
-    return render_template('DeleteEmpInput.html', )
+    return render_template('DeleteEmpInput.html' )
 
 #updateemployee
 @app.route("/updateemp", methods=['GET', 'POST'])
