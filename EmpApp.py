@@ -286,8 +286,11 @@ def calculateSalary():
         # Calculate the total working hours
         daily_working_hours = {}
         for check_in_time, check_out_time in results:
-            date_key = check_in_time.date()
-            work_duration = (check_out_time - check_in_time).total_seconds() / 3600
+            check_in_datetime = datetime.combine(datetime.now().date(), check_in_time)
+            check_out_datetime = datetime.combine(datetime.now().date(), check_out_time)
+
+            date_key = check_in_datetime.date()
+            work_duration = (check_out_datetime - check_in_datetime).total_seconds() / 3600
             if date_key in daily_working_hours:
                 daily_working_hours[date_key] += work_duration
             else:
