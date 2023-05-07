@@ -222,17 +222,17 @@ def UpdateEmp():
 ##attendance
 @app.route("/attendance")
 def record_attendance():
-    employee_id = request.form['employee_id']
+    employee_id = request.form['attend_employee_id']
     date = request.form['date']
     check_in_time = request.form['check_in_time']
     check_out_time = request.form['check_out_time']
 
     # Insert the attendance record into the attendance table
-    insert_sql = "INSERT INTO attendance (employee_id, date, check_in_time, check_out_time) VALUES (%s, %s, %s, %s)"
+    insert_sql = "INSERT INTO attendance (attend_employee_id, date, check_in_time, check_out_time) VALUES (%s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(insert_sql, (employee_id, date, check_in_time, check_out_time))
+        cursor.execute(insert_sql, (attend_employee_id, date, check_in_time, check_out_time))
         db_conn.commit()
     finally:
         cursor.close()
