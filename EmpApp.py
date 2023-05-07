@@ -131,8 +131,7 @@ def GetEmp():
         else:
             return "Employee not found"
 
-    return render_template('FindEmpInput.html', employee_id = emp_id, employee_name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
-
+    
 @app.route("/deleteemp", methods=['GET', 'POST'])
 def DeleteEmp():
     logging.debug(f"Request method: {request.method}")
@@ -158,13 +157,13 @@ def DeleteEmp():
 
             try:
                 s3.delete_object(Bucket=custombucket, Key=emp_image_file_name_in_s3)
-                return "Employee and their image have been successfully deleted."
+                return render_template('DeleteEmpInput.html' )
             except Exception as e:
                 return f"Employee deleted, but there was an issue deleting the image: {str(e)}"
         else:
             return "Employee not found or already deleted."
 
-        return render_template('DeleteEmpInput.html' )
+        
 
 #updateemployee
 @app.route("/updateemp", methods=['GET', 'POST'])
@@ -200,13 +199,13 @@ def UpdateEmp():
                     s3.delete_object(Bucket=custombucket, Key=emp_image_file_name_in_s3)
                     # Upload new image file
                     s3.upload_fileobj(emp_image_file, custombucket, emp_image_file_name_in_s3)
-                return "Employee information and image have been successfully updated."
+                return render_template('UpdateEmpInput.html', emp_id=emp_id, name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
             except Exception as e:
                 return f"Employee information updated, but there was an issue updating the image: {str(e)}"
         else:
             return "Employee not found or no changes made."
 
-        return render_template('UpdateEmpInput.html', emp_id=emp_id, name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
+        
 
 ##attendance
 @app.route("/attendance", methods=['POST'])
