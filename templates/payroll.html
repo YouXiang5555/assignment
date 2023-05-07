@@ -12,22 +12,28 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Cryptop</title>
+  <title>Cryptop</title>
 
-    <!-- slider stylesheet -->
-    <!-- slider stylesheet -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- slider stylesheet -->
+  <!-- slider stylesheet -->
+  <!-- <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css')}}">
 
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- bootstrap core css -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}">
 
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <!-- <link href="css/style.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+
+  <!-- responsive style -->
+  <!-- <link href="css/responsive.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css')}}">
 
     <style>
         #h2margin {
@@ -93,16 +99,6 @@
         }
     </style>
 
-    <script>
-        function isNumeric(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode;
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        }
-    </script>
-
 </head>
 
 <body>
@@ -111,11 +107,15 @@
         <header class="header_section">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
-                        <span>
-                            Cryptop
-                        </span>
-                    </a>
+                    <a class="navbar-brand" href="">
+                        <form>
+                          <button type="submit" formaction="/">
+                           <span>
+                             Cryptop
+                           </span>
+                          </button>
+                        </form>
+                      </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -126,25 +126,36 @@
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav  ">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="index.html">Home <span
-                                            class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="">
+                                        <form>
+                                          <button type="submit" formaction="/">
+                                            Home <span class="sr-only"></span>
+                                          </button>
+                                        </form>
+                                      </a>
+                                      <a class="nav-link" href="">
+                                        <form>
+                                          <button type="submit" formaction="/attendencehome">
+                                            Attendence <span class="sr-only"></span>
+                                          </button>
+                                        </form>
+                                      </a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="about.html"> About </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="how.html"> How </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span>Wallet</span> <img src="images/wallet.png" alt="" />
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"> Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"> Sign Up</a>
+                                    <a class="nav-link" href="">
+                                        <form>
+                                          <button type="submit" formaction="/payrollhome">
+                                            Payroll <span class="sr-only"></span>
+                                          </button>
+                                        </form>
+                                      </a>
+                                  <a class="nav-link" href="">
+                                        <form>
+                                          <button type="submit" formaction="/about">
+                                            About <span class="sr-only"></span>
+                                          </button>
+                                        </form>
+                                      </a>
                                 </li>
                             </ul>
                             <div class="user_option">
@@ -172,10 +183,9 @@
 
             <div class="box1">
                 <div class="box1">
-                    <form action="submit-attendance.php" method="post">
-                        <label for="employee-id">Employee ID:</label>
-                        <input type="text" name="employee-id" id="employee-id" onkeypress="return isNumeric(event);"
-                            required>
+                    <form action="/payroll" autocomplete="on" method = "POST>
+                        <label for="employee_id">Employee ID:</label>
+                        <input type="text" id="employee_id" name="employee_id" required>
                         <label for="month">Month:</label>
                         <select id="month" name="month">
                             <option value="01">January</option>
@@ -193,8 +203,7 @@
                         </select>
 
                         <label for="year">Year:</label>
-                        <input type="text" id="year" name="year" onkeypress="return isNumeric(event);"
-                        required>
+                        <input type="number" name="year" id="year" required>
 
                         <div class="container1">
                             <input type="submit" value="Submit">
@@ -212,15 +221,20 @@
     <section class="container-fluid footer_section">
         <p>
             &copy; 2019 All Rights Reserved By
-            <a href="https://html.design/">Free Html Templates</a>
+            <a class="nav-link" href="">
+                        <form>
+                          <button type="submit" formaction="/">
+                            Cryptop <span class="sr-only"></span>
+                          </button>
+                        </form>
+                      </a>
         </p>
     </section>
     <!-- footer section -->
 
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-    </script>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
+  <script src="{{ url_for('static', filename='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js')}}"></script>
     <!-- owl carousel script 
     -->
     <script type="text/javascript">
