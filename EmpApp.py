@@ -25,11 +25,26 @@ table = 'employee'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
+    
+@app.route("/addhome", methods=['GET', 'POST'])
+def addpage():
+    return render_template('insert.html')
 
+@app.route("/findhome", methods=['GET', 'POST'])
+def getpage():
+    return render_template('find.html')
 
-@app.route("/about", methods=['POST'])
+@app.route("/updatehome", methods=['GET', 'POST'])
+def uppage():
+    return render_template('update.html')
+
+@app.route("/deletehome", methods=['GET', 'POST'])
+def uppage():
+    return render_template('delete.html')
+    
+@app.route("/about")
 def about():
-    return render_template('www.intellipaat.com')
+    return render_template('about.html')
 
 
 @app.route("/addemp", methods=['POST'])
