@@ -275,24 +275,24 @@ def calculateSalary():
 
         employee_name, contact, email, position, payscale, hiredDate = result
 
-            # Retrieve attendance data
-    cursor.execute(select_attendance_sql, (employee_id, month, year))
-    results = cursor.fetchall()
+        # Retrieve attendance data
+        cursor.execute(select_attendance_sql, (employee_id, month, year))
+        results = cursor.fetchall()
 
-    if len(results) == 0:
-        return "No attendance records found for this employee in the specified month and year"
+        if len(results) == 0:
+            return "No attendance records found for this employee in the specified month and year"
 
-    # Calculate the total working hours
-    daily_working_hours = {}
-    for check_in_time, check_out_time in results:
-        date_key = check_in_time.date()
-        work_duration = (check_out_time - check_in_time).total_seconds() / 3600
-        if date_key in daily_working_hours:
-            daily_working_hours[date_key] += work_duration
-        else:
-            daily_working_hours[date_key] = work_duration
+        # Calculate the total working hours
+        daily_working_hours = {}
+        for check_in_time, check_out_time in results:
+            date_key = check_in_time.date()
+            work_duration = (check_out_time - check_in_time).total_seconds() / 3600
+            if date_key in daily_working_hours:
+                daily_working_hours[date_key] += work_duration
+            else:
+                daily_working_hours[date_key] = work_duration
 
-    total_working_hours = sum(daily_working_hours.values())
+        total_working_hours = sum(daily_working_hours.values())
 
         # Calculate the total salary
         total_salary = total_working_hours * payscale
@@ -301,6 +301,7 @@ def calculateSalary():
         return render_template('payroll_output.html', emp_id=employee_id, name=employee_name, contact=contact, email=email, position=position, payscale=payscale, hiredDate=hiredDate, month=month, year=year, total_working_hours=total_working_hours, total_salary=total_salary)
     finally:
         cursor.close()
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
