@@ -255,14 +255,17 @@ def record_attendance():
     print("attendance record added...")
     return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date, check_in_time = check_in_time, check_out_time  = check_out_time, duration = duration_hours)
 
+from flask import request, render_template
+
 @app.route("/payroll", methods=['GET', 'POST'])
 def calculateSalary():
     employee_id = request.form['payroll_employee_id']
     month = int(request.form['month'])
     year = int(request.form['year'])
+
     # Retrieve the necessary data from the employee and attendance tables
     select_employee_sql = "SELECT employee_name, contact, email, position, payscale, hiredDate FROM employee WHERE employee_id = %s"
-    select_attendance_sql = "SELECT check_in_time, check_out_time FROM attendance WHERE employee_id = %s AND MONTH(date) = %s AND YEAR(date) = %s"
+    select_attendance_sql = "SELECT date, check_in_time, check_out_time FROM attendance WHERE employee_id = %s AND MONTH(date) = %s AND YEAR(date) = %s"
 
     cursor = db_conn.cursor()
 
@@ -284,12 +287,9 @@ def calculateSalary():
 
         # Calculate the total working hours
         daily_working_hours = {}
-        for check_in_time, check_out_time in results:
-            check_in_datetime = datetime.combine(datetime.now().date(), check_in_time)
-            check_out_datetime = datetime.combine(datetime.now().date(), check_out_time)
-
-            date_key = check_in_datetime.date()
-            work_duration = (check_out_datetime - check_in_datetime).total_seconds() / 3600
+        for attendance_date, check_in_time, check_out_time in results:
+            date_key = attendance_date
+            work_duration = (check_out_time - check_in_time).total_seconds() / 3600
             if date_key in daily_working_hours:
                 daily_working_hours[date_key] += work_duration
             else:
@@ -304,7 +304,6 @@ def calculateSalary():
         return render_template('payroll_output.html', emp_id=employee_id, name=employee_name, contact=contact, email=email, position=position, payscale=payscale, hiredDate=hiredDate, month=month, year=year, total_working_hours=total_working_hours, total_salary=total_salary)
     finally:
         cursor.close()
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
