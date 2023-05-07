@@ -257,7 +257,7 @@ def record_attendance():
 
 @app.route("/payroll", methods=['GET', 'POST'])
 def calculateSalary():
-    employee_id = request.form['employee_id']
+    employee_id = request.form['payroll_employee_id']
     month = int(request.form['month'])
     year = int(request.form['year'])
     # Retrieve the necessary data from the employee and attendance tables
