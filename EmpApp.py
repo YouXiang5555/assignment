@@ -140,7 +140,7 @@ def DeleteEmp():
         # Delete employee record from the database
         delete_sql = "DELETE FROM employee WHERE employee_id = %s"
         cursor = db_conn.cursor()
-        cursor.execute(delete_sql, (emp_id,))
+        cursor.execute(delete_sql, (emp_id))
         db_conn.commit()
 
         deleted_rows = cursor.rowcount
