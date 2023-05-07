@@ -164,7 +164,7 @@ def DeleteEmp():
         else:
             return "Employee not found or already deleted."
 
-    return render_template('DeleteEmpInput.html' )
+        return render_template('DeleteEmpInput.html' )
 
 #updateemployee
 @app.route("/updateemp", methods=['GET', 'POST'])
