@@ -125,7 +125,7 @@ def GetEmp():
                 custombucket,
                 emp_image_file_name_in_s3)
 
-            return render_template('FindEmpInput.html', name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
+            return render_template('FindEmpInput.html', employee_id = emp_id, employee_name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
         else:
             return "Employee not found"
 
