@@ -178,32 +178,45 @@ def UpdateEmp():
         hiredDate = request.form['update_hiredDate']
         emp_image_file = request.files['update_image']
 
-        # Update employee record in the database
-        update_sql = """UPDATE employee SET employee_name = %s, contact = %s,
-                        email = %s, position = %s,payscale = %s,hiredDate = %s WHERE employee_id = %s"""
-        cursor = db_conn.cursor()
-        cursor.execute(update_sql, (employee_name, contact, email, position, payscale,hiredDate,emp_id))
-        db_conn.commit()
+# Update employee record in the database
+update_sql = """UPDATE employee SET employee_name = %s, contact = %s,
+                email = %s, position = %s,payscale = %s,hiredDate = %s WHERE employee_id = %s"""
+cursor = db_conn.cursor()
+cursor.execute(update_sql, (employee_name, contact, email, position, payscale, hiredDate, emp_id))
+db_conn.commit()
 
-        updated_rows = cursor.rowcount
-        cursor.close()
+updated_rows = cursor.rowcount
+cursor.close()
+
+if updated_rows > 0:
+    # Update employee image in S3
+    emp_image_file_name_in_s3 = "emp_id_{0}_image_file".format(emp_id)
+    s3 = boto3.client('s3')
+
+    try:
+        if emp_image_file.filename != "":
+            # Delete existing image file
+            s3.delete_object(Bucket=custombucket, Key=emp_image_file_name_in_s3)
+            # Upload new image file
+            s3.upload_fileobj(emp_image_file, custombucket, emp_image_file_name_in_s3)
         
-        if updated_rows > 0:
-            # Update employee image in S3
-            emp_image_file_name_in_s3 = "emp_id_{0}_image_file".format(emp_id)
-            s3 = boto3.client('s3')
-
-            try:
-                if emp_image_file.filename != "":
-                    # Delete existing image file
-                    s3.delete_object(Bucket=custombucket, Key=emp_image_file_name_in_s3)
-                    # Upload new image file
-                    s3.upload_fileobj(emp_image_file, custombucket, emp_image_file_name_in_s3)
-                return render_template('UpdateEmpInput.html', emp_id=emp_id, name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
-            except Exception as e:
-                return f"Employee information updated, but there was an issue updating the image: {str(e)}"
+        # Generate object URL
+        bucket_location = s3.get_bucket_location(Bucket=custombucket)
+        s3_location = bucket_location['LocationConstraint']
+        if s3_location is None:
+            s3_location = ''
         else:
-            return "Employee not found or no changes made."
+            s3_location = '-' + s3_location
+        object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+            s3_location,
+            custombucket,
+            emp_image_file_name_in_s3)
+        
+        return render_template('UpdateEmpInput.html', emp_id=emp_id, name=employee_name, contact=contact, email=email, position=position, payscale=payscale, hiredDate=hiredDate, image_url=object_url)
+    except Exception as e:
+        return f"Employee information updated, but there was an issue updating the image: {str(e)}"
+else:
+    return "Employee not found or no changes made."
 
         
 
