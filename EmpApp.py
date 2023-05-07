@@ -238,7 +238,7 @@ def record_attendance():
         cursor.close()
 
     print("attendance record added...")
-    return render_template('attendance_tracker_output.html', employee_id=employee_id, date=date)
+    return render_template('attendance_tracker_output.html', attend_employee_id=attend_employee_id, date=date)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
