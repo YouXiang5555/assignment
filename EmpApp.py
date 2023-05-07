@@ -159,7 +159,7 @@ def DeleteEmp():
         else:
             return "Employee not found or already deleted."
 
-    return render_template('DeleteEmpInput.html')
+    return render_template('DeleteEmpInput.html', )
 
 #updateemployee
 @app.route("/updateemp", methods=['GET', 'POST'])
@@ -201,7 +201,7 @@ def UpdateEmp():
         else:
             return "Employee not found or no changes made."
 
-    return render_template('UpdateEmpInput.html')
+    return render_template('UpdateEmpInput.html', emp_id=emp_id, name=employee_name, contact=contact, email = email, position = position, payscale=payscale, hiredDate=hiredDate, image_url = object_url)
 
 ##attendance
 @app.route("/attendance", methods=['POST'])
