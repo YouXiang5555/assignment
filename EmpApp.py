@@ -220,7 +220,7 @@ def UpdateEmp():
         
 
 ##attendance
-@app.route("/attendance")
+@app.route("/attendance", methods=['GET', 'POST'])
 def record_attendance():
     employee_id = request.form['attend_employee_id']
     date = request.form['date']
