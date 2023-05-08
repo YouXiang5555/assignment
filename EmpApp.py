@@ -338,7 +338,7 @@ def employees_by_position():
 
         return render_template('positionEmpInput.html', employees=employees, position=position, s3=s3, custombucket=custombucket)
     else:
-    return render_template('positionEmpInput.html')
+        return render_template('positionEmpInput.html')
 
         
         
