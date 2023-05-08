@@ -93,7 +93,7 @@
               <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="">
                 <form>
-                  <button type="submit" formaction="/">
+                  <button type="submit" formaction="/" style="background-color: transparent; border: none;">
                    <span>
                      Cryptop
                    </span>
@@ -111,34 +111,47 @@
                       <li class="nav-item ">
                         <a class="nav-link" href="">
                                         <form>
-                                          <button type="submit" formaction="/">
+                                          <button type="submit" formaction="/" style="background-color: transparent; border: none; color: white;">
                                             Home <span class="sr-only"></span>
                                           </button>
                                         </form>
-                                      </a>
-                                      <a class="nav-link" href="">
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                            <a class="nav-link" href="">
                                         <form>
-                                          <button type="submit" formaction="/attendencehome">
+                                          <button type="submit" formaction="/attendencehome" style="background-color: transparent; border: none; color: white;">
                                             Attendence <span class="sr-only"></span>
                                           </button>
                                         </form>
                                       </a>
                       </li>
-                      <li class="nav-item active">
-                        <a class="nav-link" href="">
+                      <li class="nav-item">
+                            <a class="nav-link" href="">
                                         <form>
-                                          <button type="submit" formaction="/payrollhome">
+                                          <button type="submit" formaction="/payrollhome" style="background-color: transparent; border: none; color: white;">
                                             Payroll <span class="sr-only"></span>
                                           </button>
                                         </form>
-                                      </a>
-                                  <a class="nav-link" href="">
-                                        <form>
-                                          <button type="submit" formaction="/about">
-                                            About <span class="sr-only"></span>
-                                          </button>
-                                        </form>
-                                      </a>
+                                      </a> 
+                      </li>
+                      <li class="nav-item">
+                            <a class="nav-link" href="">
+                              <form>
+                                <button type="submit" formaction="/positionhome" style="background-color: transparent; border: none; color: white;">
+                                  Position <span class="sr-only"></span>
+                                </button>
+                              </form>
+                            </a>
+                      </li>
+                      <li class="nav-item active">
+                              <a class="nav-link" href="">
+                                    <form>
+                                      <button type="submit" formaction="/about" style="background-color: transparent; border: none; color: white;">
+                                        About <span class="sr-only"></span>
+                                      </button>
+                                    </form>
+                                  </a>
                       </li>
                     </ul>
                     <div class="user_option">
@@ -198,19 +211,132 @@
     {% endif %}
 </section>
 
+    <section class="info_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <div class="info_logo">
+              <a class="navbar-brand" href="">
+                <form>
+                  <button type="submit" formaction="/" style="background-color: transparent; border: none;">
+                   <span>
+                     Cryptop
+                   </span>
+                  </button>
+                </form>
+              </a>
+            </div>
+            <h5>
+              Contact Us
+            </h5>
+            <div>
+              <div class="img-box">
+                <!-- <img src="images/location.png" width="18px" alt="" /> -->
+                <img src="{{ url_for('static', filename='images/location.png')}}" width="18px" alt="" >
+              </div>
+              <p>
+                Page when looking at its layou
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <!-- <img src="images/phone.png" width="18px" alt="" /> -->
+                <img src="{{ url_for('static', filename='images/phone.png')}}" width="18px" alt="" >
+              </div>
+              <p>
+                +01 1234567890
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <!-- <img src="images/envelope.png" width="18px" alt="" /> -->
+                <img src="{{ url_for('static', filename='images/envelope.png')}}" width="18px" alt="" >
+              </div>
+              <p>
+                demo@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Invest Money
+            </h5>
+            <p>
+              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+              in some form, by injected humour,
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_links">
+            <h5>
+              Useful Links
+            </h5>
+            <ul>
+              <li>
+                <a href="">
+                  There are many
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  variations of
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  passages of
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  Lorem Ipsum
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  available, but the
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  majority have
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  suffered
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="">
+              <input type="email" placeholder="Enter your email" />
+              <button>
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     <!-- end info_section -->
 
     <!-- footer section -->
     <section class="container-fluid footer_section">
         <p>
-            &copy; 2019 All Rights Reserved By
-            <a class="nav-link" href="">
-                        <form>
-                          <button type="submit" formaction="/" style="background-color: transparent; border: none;">
-                            Cryptop <span class="sr-only"></span>
-                          </button>
-                        </form>
-                      </a>
+            &copy; 2023 All Rights Reserved By Cryptop
         </p>
     </section>
     <!-- footer section -->
