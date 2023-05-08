@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>PortfolioPerfect</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <!-- Favicon
+    ================================================== -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="szy/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="szy/img/favicon.png"> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='szy/img/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='szy/img/favicon.png')}}">
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="szy/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='szy/css/bootstrap.min.css')}}">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="szy/css/style.css" rel="stylesheet">
+    <link href="szy/css/responsive.css" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='szy/css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='szy/css/responsive.css')}}">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    
+
+    <div id="hero" class="hero">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h1>Soo Zhi Yao</h1>
+                    <div class="page-scroll">
+                        <p class="job-title">Data Scientist</p>
+                        <!-- <a href="#contact" class="btn btn-fill ">Hire me</a> -->
+                        <div class="clearfix visible-xxs"></div>
+                        <a href="#about" class="btn btn-border">Explore more</a>
+                    </div>
+                </div>
+            
+                <div class="col-md-6 text-right">
+                    <!-- <img src="szy/img/zhiyao.jpg" alt="alex-vidal"> -->
+                    <img src="{{ url_for('static', filename='szy/img/zhiyao.jpg')}}" alt="alex-vidal">
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section id="about" class="site-section section-about text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>About</h2>
+                        <!-- <img src="szy/img/lines.svg" class="img-lines" alt="lines"> -->
+                        <img src="{{ url_for('static', filename='szy/img/lines.svg')}}" class="img-lines" alt="lines">
+                        <p>Hi, I'm Zhi Yao, founder of Cryptop. With years of experience in programming, I'm passionate about solving real-world problems with technology. I have expertise in various programming languages, data analysis, software development, and system architecture. At Cryptop, I'm committed to creating secure and user-friendly platforms for cryptocurrency enthusiasts.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-about -->
+
+        <section class="site-section section-skills">
+            <div class="container">
+                <div class="text-center">
+                    <h3>My Skills</h3>
+                    <!-- <img src="szy/img/lines.svg" class="img-lines" alt="lines"> -->
+                    <img src="{{ url_for('static', filename='szy/img/lines.svg')}}" class="img-lines" alt="lines">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Html/css</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="100"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>Python</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="75"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Java</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="82"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>SQL</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="66"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Data Analysis</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="97"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>Data Visualization</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="45"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-skills -->
+
+        <section id="service" class="site-section section-services overlay text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>What i do</h3>
+                        <!-- <img src="szy/img/lines.svg" class="img-lines" alt="lines"> -->
+                        <img src="{{ url_for('static', filename='szy/img/lines.svg')}}" alt="lines">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <!-- <img src="szy/img/front-end.svg" alt="Front End Developer"> -->
+                            <img src="{{ url_for('static', filename='szy/img/front-end.svg')}}" alt="Front End Developer">
+                            <h4>Front-end</h4>
+                            <p>I have worked on several front-end projects, including a "To-Do List" web application and a responsive landing page using Bootstrap and CSS grid, which have helped me develop my problem-solving and analytical skills.</p>
+                        </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <!-- <img src="szy/img/back-end.svg" alt="Back End Developer"> -->
+                            <img src="{{ url_for('static', filename='szy/img/back-end.svg')}}" alt="Back End Developer">
+                            <h4>Data Analytic</h4>
+                            <p>I am proficient in programming languages such as Python and R, as well as data analysis libraries such as Pandas, NumPy, and SciPy. Additionally, I have experience with data visualization tools such as Tableau and Power BI, which enable me to create visually appealing and informative reports and dashboards.</p>
+                        </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <!-- <img src="szy/img/consultancy.svg" alt="Coding"> -->
+                            <img src="{{ url_for('static', filename='szy/img/consultancy.svg')}}" alt="Coding">
+                            <h4>Data Engineering</h4>
+                            <p>I am proficient in using database technologies such as MySQL and MongoDB. I have experience with data processing frameworks such as Hadoop, Spark, and Kafka, which enable me to handle large-scale data processing and analysis.</p>
+                        </div><!-- /.service -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-services -->
+
+        
+
+        <section class="site-section section-counters text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="3" data-speed="2000">0</p>
+                        <h4>Years Experience</h4>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="36" data-speed="2000">0</p>       
+                        <h4>Projects Delivered</h4>      
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <p id="infinity" class="counter" data-from="0" data-to="1" data-speed="1000">0</p>
+                        <h4>Seconds on this site!<br>What are you waiting for?</h4>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.section-counters -->
+
+    
+
+    </main><!-- /#main -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="szy/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="szy/js/skrollr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
+    <script src="szy/js/jquery.countTo.min.js"></script>
+    <script src="szy/js/script.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{{ url_for('static', filename='szy/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='szy/js/skrollr.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
+    <script src="{{ url_for('static', filename='szy/js/jquery.countTo.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='szy/js/script.js')}}"></script>
+  
+</body>
+</html>
