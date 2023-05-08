@@ -324,6 +324,8 @@ def calculateSalary():
 @app.route("/positionemp", methods=['GET', 'POST'])
 def employees_by_position():
     if request.method == 'POST':
+        # Print submitted form data for debugging purposes
+        print(request.form)
         position = request.form['employee_position']
 
         # Fetch employee data from the database
