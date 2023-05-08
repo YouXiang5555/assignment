@@ -56,7 +56,7 @@ def payrollpage():
 def about():
     return render_template('about.html')
 
-@app.route("/positionemp", methods=['GET','POST'])
+@app.route("/positionhome", methods=['GET','POST'])
 def select_position():
     return render_template('position.html')
 
@@ -321,5 +321,25 @@ def calculateSalary():
     finally:
         cursor.close()
 
+@app.route("/positionemp", methods=['GET', 'POST'])
+def employees_by_position():
+    if request.method == 'POST':
+        position = request.form['position']
+
+        # Fetch employee data from the database
+        select_sql = "SELECT * FROM employee WHERE position = %s"
+        cursor = db_conn.cursor()
+        cursor.execute(select_sql, (position,))
+        employees = cursor.fetchall()
+        cursor.close()
+
+        # Initialize the S3 client
+        s3 = boto3.client('s3')
+
+        return render_template('positionEmpInput.html', employees=employees, position=position, s3=s3, custombucket=custombucket)
+    else:
+        return render_template('position_select.html')
+        
+        
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
