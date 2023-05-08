@@ -323,22 +323,20 @@ def calculateSalary():
 
 @app.route("/positionemp", methods=['GET', 'POST'])
 def employees_by_position():
-    if request.method == 'POST':
-        position = request.form['position']
+    position = request.form['position']
 
-        # Fetch employee data from the database
-        select_sql = "SELECT * FROM employee WHERE position = %s"
-        cursor = db_conn.cursor()
-        cursor.execute(select_sql, (position,))
-        employees = cursor.fetchall()
-        cursor.close()
+    # Fetch employee data from the database
+    select_sql = "SELECT * FROM employee WHERE position = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(select_sql, (position,))
+    employees = cursor.fetchall()
+    cursor.close()
 
-        # Initialize the S3 client
-        s3 = boto3.client('s3')
+    # Initialize the S3 client
+    s3 = boto3.client('s3')
 
-        return render_template('positionEmpInput.html', employees=employees, position=position, s3=s3, custombucket=custombucket)
-    else:
-        return render_template('position_select.html')
+    return render_template('positionEmpInput.html', employees=employees, position=position, s3=s3, custombucket=custombucket)
+
         
         
 if __name__ == '__main__':
