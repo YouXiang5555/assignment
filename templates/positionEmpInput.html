@@ -157,60 +157,43 @@
     <!-- about section -->
 
     <section class="client_section layout_padding-bottom">
-        <div class="container">
-            <div class="heading_container">
-                <h2 id=h2margin>
-                    Position Found!!
-                </h2>
-            </div>
-
-            <div class="box1">
-                <p>The employee's details for the position {{ position }} is shown below.</p>
-                <table>
-                    <tr>
-                        <th>Attribute Name</th>
-                        <th>Attribute Value</th>
-                    </tr>
-                    <tr>
-                        <td>Employee ID</td>
-                        <td>{{ employee_id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Employee Name</td>
-                        <td>{{ employee_name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Contact</td>
-                        <td>{{ contact }}</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>{{ email }}</td>
-                    </tr>
-                    <tr>
-                        <td>Pay Scale</td>
-                        <td>{{ payscale }}</td>
-                    </tr>
-                    <tr>
-                        <td>Hired Date</td>
-                        <td>{{ hiredDate }}</td>
-                    </tr>
-                    <tr>
-                        <td>Image</td>
-                       <td><img src= "{{ image_url }}" alt="aaaa" width="250" height="350">
-                    </tr>
-                </table>
-            </div>
-            <div class="button-wrapper">
-                <a class="nav-link" href="">
-                        <form>
-                          <button type="submit" formaction="/">
-                            Back to Home <span class="sr-only"></span>
-                          </button>
-                        </form>
-                      </a>
-            </div>
-        </div>
+        <h1>Employees with Position: {{ position }}</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Payscale</th>
+            <th>Hired Date</th>
+            <th>Image</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee[0] }}</td>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+            <td>{{ employee[5] }}</td>
+            <td>{{ employee[6] }}</td>
+            <td>
+                {% set emp_id = employee[0] %}
+                {% set emp_image_file_name_in_s3 = "emp_id_" + emp_id|string + "_image_file" %}
+                {% set bucket_location = s3.get_bucket_location(Bucket=custombucket) %}
+                {% set s3_location = bucket_location['LocationConstraint'] %}
+                {% if s3_location is none %}
+                    {% set s3_location = '' %}
+                {% else %}
+                    {% set s3_location = '-' + s3_location %}
+                {% endif %}
+                {% set object_url = "https://s3" + s3_location + ".amazonaws.com/" + custombucket + "/" + emp_image_file_name_in_s3 %}
+                <img src="{{ object_url }}" alt="Employee Image" width="100">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     </section>
 
     <!-- end info_section -->
