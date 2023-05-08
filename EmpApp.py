@@ -56,6 +56,18 @@ def payrollpage():
 def about():
     return render_template('about.html')
 
+@app.route("/szy")
+def szyage():
+    return render_template('zyportfolio.html')
+
+@app.route("/lxh")
+def lxhpage():
+    return render_template('xhportfolio.html')
+
+@app.route("/cyx")
+def cyxpage():
+    return render_template('yxportfolio.html')
+
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
