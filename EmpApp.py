@@ -56,6 +56,10 @@ def payrollpage():
 def about():
     return render_template('about.html')
 
+@app.route("/positionemp", methods=['GET','POST'])
+def select_position():
+    return render_template('position.html')
+
 @app.route("/szy")
 def szyage():
     return render_template('zyportfolio.html')
